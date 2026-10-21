@@ -1,0 +1,58 @@
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <img src="/static/img/alfa-logo.png" alt="Alfa Global Group" width="1000" height="246" loading="lazy">
+        <p>A diversified strategic investment and holding company, building enduring enterprises across generations.</p>
+        <div class="footer__social">
+          <a href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn">{{ page.icon("linkedin")|safe }}</a>
+          <a href="mailto:contact@alfaglobalwealth.com" aria-label="Email">{{ page.icon("mail")|safe }}</a>
+          <a href="https://wa.me/917305626795" target="_blank" rel="noopener" aria-label="WhatsApp">{{ page.icon("whatsapp")|safe }}</a>
+        </div>
+      </div>
+
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="/about">About Us</a></li>
+          <li><a href="/services">Services</a></li>
+          <li><a href="/strategy">Strategy</a></li>
+          <li><a href="/global-access">Global Access</a></li>
+          <li><a href="/team">Leadership</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Our Companies</h4>
+        <ul>
+          {% for c in page.companies %}
+          <li><a href="/{{ c.slug }}">{{ c.name }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div class="footer__contact">
+        <h4>Office</h4>
+        <p><strong>Chennai (HQ)</strong></p>
+        <p>No. 6/8, Second Floor, Lakshmi Nagar, 10th Street, Nanganallur, Chennai - 600 061.</p>
+        <p><a href="tel:+917305626795">+91 44-2224-2929</a><br><a href="tel:+917358065999">+91 73580-65999</a></p>
+        <p><a href="mailto:contact@alfaglobalwealth.com">contact@alfaglobalwealth.com</a></p>
+      </div>
+    </div>
+
+    <div class="footer__disclaimer">
+      <p>Alfa Global Group invests only its own capital. It does not provide investment advice, portfolio management, research recommendations, or broking services, and does not accept money from the public for investment. Nothing on this website is an offer, solicitation, or recommendation to buy or sell any security or financial product. Group companies that carry on any regulated activity do so separately, under their own registrations where applicable.</p>
+    </div>
+
+    <div class="footer__bar">
+      <span>© {{ page.year() }} Alfa Global Group. All rights reserved.</span>
+      <nav aria-label="Legal">
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
+        <a href="https://techbook.co.in/" target="_blank" rel="noopener">Website by Techbook Technologies</a>
+      </nav>
+    </div>
+  </div>
+  <div class="footer__watermark" aria-hidden="true">alfa global</div>
+</footer>

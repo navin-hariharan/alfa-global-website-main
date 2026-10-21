@@ -1,0 +1,287 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="hero" data-hero>
+  <div class="hero__aurora" aria-hidden="true"><span></span><span></span><span></span></div>
+  <div class="hero__grid" aria-hidden="true"></div>
+
+  <div class="container hero__layout">
+    <div>
+      <div class="hero__badge hero__fade"><b>Alfa Global Group</b> Strategic investment &amp; holding company</div>
+      <h1 class="h1">
+        <span class="line"><span class="word" style="--w:0">Beyond</span> <span class="word" style="--w:1">capital.</span></span>
+        <span class="line"><span class="word text-gradient" style="--w:2">Building</span> <span class="word text-gradient" style="--w:3">futures.</span></span>
+      </h1>
+      <p class="hero__lead hero__fade" style="--d:1">
+        Alfa Global Group is a diversified strategic investment and holding company. Deploying proprietary capital with a long-term
+        ownership perspective, the Group builds, acquires, and scales enterprises across agriculture, maritime, infrastructure, and technology.
+      </p>
+      <div class="btn-row hero__fade" style="--d:2">
+        <a class="btn" href="/contact" data-magnetic>Partnership Enquiries {{ page.icon("arrow")|safe }}</a>
+        <a class="btn btn--glass" href="/about" data-magnetic>About the Group</a>
+      </div>
+      <dl class="hero__stats hero__fade" style="--d:3">
+        <div class="stat"><dt>group enterprises</dt><dd data-count="7">7</dd></div>
+        <div class="stat"><dt>countries of engagement</dt><dd data-count="10" data-suffix="+">10+</dd></div>
+        <div class="stat"><dt>years of combined leadership</dt><dd data-count="30" data-suffix="+">30+</dd></div>
+      </dl>
+    </div>
+
+    <div class="hero__visual hero__fade" style="--d:1" aria-hidden="true">
+      <div class="hero__ring"></div>
+      <div class="hero__ring hero__ring--2"></div>
+      <canvas data-globe></canvas>
+      <span class="hero__chip" style="--i:0">{{ page.icon("leaf")|safe }} Agriculture</span>
+      <span class="hero__chip" style="--i:1">{{ page.icon("ship")|safe }} Maritime</span>
+      <span class="hero__chip" style="--i:2">{{ page.icon("building")|safe }} Infrastructure</span>
+      <span class="hero__chip" style="--i:3">{{ page.icon("chip")|safe }} Technology</span>
+    </div>
+  </div>
+
+  <svg class="hero__arrow" viewBox="0 0 1440 400" preserveAspectRatio="none" aria-hidden="true">
+    <defs>
+      <linearGradient id="arrow-grad" x1="0" x2="1"><stop offset="0" stop-color="#2f9a39" stop-opacity="0"/><stop offset=".35" stop-color="#2f9a39"/><stop offset="1" stop-color="#5cc265"/></linearGradient>
+    </defs>
+    <path pathLength="1" d="M-20 360 L60 310 L110 370 L170 280 L220 340 L290 300 L520 320 L760 250 L1000 200 L1220 120 L1460 30" fill="none" stroke="url(#arrow-grad)" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  </svg>
+
+  <div class="scroll-cue" aria-hidden="true"><span></span>Scroll</div>
+  <svg class="hero__wave" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 90V40C240 0 480 0 720 30s480 60 720 10v50z" fill="currentColor"/></svg>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    {% for _ in 0..2 %}
+    <span class="marquee__item">{{ page.icon("layers")|safe }} Strategic Holdings</span>
+    <span class="marquee__item">{{ page.icon("ship")|safe }} Maritime</span>
+    <span class="marquee__item">{{ page.icon("leaf")|safe }} Agriculture</span>
+    <span class="marquee__item">{{ page.icon("building")|safe }} Infrastructure</span>
+    <span class="marquee__item">{{ page.icon("chip")|safe }} Technology</span>
+    <span class="marquee__item">{{ page.icon("shield")|safe }} Cyber Security</span>
+    <span class="marquee__item">{{ page.icon("handshake")|safe }} Global Partnerships</span>
+    {% endfor %}
+  </div>
+</div>
+
+<!-- Group enterprises -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">The Group</span>
+      <h2 class="h2">Our Group <span class="text-brand">Enterprises</span></h2>
+      <p class="lead">A family of enterprises across maritime, technology, agriculture and security, each operated by its own management and backed by the Group’s long-term ownership.</p>
+    </div>
+    <div class="grid grid-3">
+      {% for c in page.companies %}{% if c.slug != "alfa-global-wealth-advisors" %}
+      <a class="card card--tilt enterprise reveal" style="--d:{{ loop.index0 % 3 }}" href="/{{ c.slug }}" data-tilt>
+        <div class="enterprise__logo">
+          <img src="{{ c.logo }}" alt="{{ c.name }} logo" loading="lazy" data-logo>
+        </div>
+        <span class="enterprise__sector">{{ c.sector }}</span>
+        <h3 class="h3">{{ c.name }}</h3>
+        <p>{{ c.summary }}</p>
+        <span class="link-arrow">Explore {{ page.icon("arrow")|safe }}</span>
+      </a>
+      {% endif %}{% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- Who we are -->
+<section class="section section--soft">
+  <div class="container split">
+    <div>
+      <div class="reveal">
+        <span class="eyebrow">Group Overview</span>
+        <h2 class="h2">Who We Are</h2>
+        <p class="lead" style="margin-top:20px">
+          Alfa Global Group is a diversified strategic investment and holding company. Guided by a long-term ownership philosophy, the Group
+          deploys proprietary capital into enterprises and projects that strengthen industries and generate enduring value across generations.
+        </p>
+        <p class="muted">
+          Its distinctive strength lies in combining disciplined capital stewardship with entrepreneurial execution, ensuring that every enterprise
+          it supports benefits from far more than financial investment.
+        </p>
+      </div>
+      <div class="reveal" style="--d:1; margin-top:40px">
+        <span class="eyebrow">Our Purpose</span>
+        <h2 class="h2">Why We Exist</h2>
+        <p class="muted" style="margin-top:20px">
+          Capital attains its greatest value when it builds enduring institutions. The Group exists to direct resources, expertise, and
+          strategic insight towards ventures that redefine growth, foster innovation, and contribute meaningfully to its enterprises, its
+          partners, and the communities in which it operates.
+        </p>
+        <a class="link-arrow" href="/about" style="margin-top:12px">Learn more about the Group {{ page.icon("arrow")|safe }}</a>
+      </div>
+    </div>
+
+    <div class="orbit reveal reveal--zoom" aria-hidden="true">
+      <div class="orbit__ring orbit__ring--2">
+        <span class="orbit__node" style="--a:0deg"><span>{{ page.icon("ship")|safe }} Maritime</span></span>
+        <span class="orbit__node" style="--a:90deg"><span>{{ page.icon("leaf")|safe }} Agriculture</span></span>
+        <span class="orbit__node" style="--a:180deg"><span>{{ page.icon("chip")|safe }} Technology</span></span>
+        <span class="orbit__node" style="--a:270deg"><span>{{ page.icon("shield")|safe }} Cyber Security</span></span>
+      </div>
+      <div class="orbit__ring orbit__ring--1">
+        <span class="orbit__node" style="--a:45deg"><span>{{ page.icon("layers")|safe }} Holdings</span></span>
+        <span class="orbit__node" style="--a:135deg"><span>{{ page.icon("building")|safe }} Infrastructure</span></span>
+        <span class="orbit__node" style="--a:315deg"><span>{{ page.icon("handshake")|safe }} Partnerships</span></span>
+      </div>
+      <div class="orbit__core"><img src="/static/img/alfa-mark.png" alt="" width="700" height="442" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Investment focus -->
+<section class="section">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">What We Do</span>
+      <h2 class="h2">Investment Focus</h2>
+      <p class="lead">Three areas where the Group commits its own capital, expertise and relationships.</p>
+    </div>
+
+    <div class="focus" data-focus>
+      <div class="focus__tabs" role="tablist" aria-label="Investment focus">
+        <button class="focus__tab reveal" role="tab" id="ft-0" aria-controls="fp-0" aria-selected="true">
+          <span class="icon-badge">{{ page.icon("layers")|safe }}</span>
+          <span><span class="focus__title">Strategic Holdings</span><span class="focus__desc">Long-term proprietary investments in operating companies, joint ventures, and scalable enterprises across sectors.</span></span>
+        </button>
+        <button class="focus__tab reveal" style="--d:1" role="tab" id="ft-1" aria-controls="fp-1" aria-selected="false" tabindex="-1">
+          <span class="icon-badge">{{ page.icon("building")|safe }}</span>
+          <span><span class="focus__title">High-Impact Projects</span><span class="focus__desc">Origination and funding of large-scale projects in infrastructure, energy, maritime, manufacturing, and technology.</span></span>
+        </button>
+        <button class="focus__tab reveal" style="--d:2" role="tab" id="ft-2" aria-controls="fp-2" aria-selected="false" tabindex="-1">
+          <span class="icon-badge">{{ page.icon("handshake")|safe }}</span>
+          <span><span class="focus__title">Global Partnerships</span><span class="focus__desc">Cross-border alliances and operating partnerships that extend the Group’s enterprises into new markets.</span></span>
+        </button>
+      </div>
+
+      <div class="reveal reveal--right" style="--d:1">
+        <div class="focus__panel" role="tabpanel" id="fp-0" aria-labelledby="ft-0">
+          <div class="focus__art">{{ page.icon("layers")|safe }}</div>
+          <span class="eyebrow">01 · Holdings</span>
+          <h3>Strategic Holdings</h3>
+          <ul class="checklist"><li>Strategic and Controlling Interests</li><li>Joint Ventures</li><li>Growth Capital for Group Enterprises</li><li>Acquisitions</li></ul>
+          <a class="btn btn--light" href="/strategy">See our strategy {{ page.icon("arrow")|safe }}</a>
+        </div>
+        <div class="focus__panel" role="tabpanel" id="fp-1" aria-labelledby="ft-1" hidden>
+          <div class="focus__art">{{ page.icon("building")|safe }}</div>
+          <span class="eyebrow">02 · Projects</span>
+          <h3>High-Impact Projects</h3>
+          <ul class="checklist"><li>Infrastructure Development</li><li>Manufacturing Projects</li><li>Shipping &amp; Maritime</li><li>Technology Ventures</li></ul>
+          <a class="btn btn--light" href="/strategy">See our strategy {{ page.icon("arrow")|safe }}</a>
+        </div>
+        <div class="focus__panel" role="tabpanel" id="fp-2" aria-labelledby="ft-2" hidden>
+          <div class="focus__art">{{ page.icon("handshake")|safe }}</div>
+          <span class="eyebrow">03 · Partnerships</span>
+          <h3>Global Partnerships</h3>
+          <ul class="checklist"><li>Cross-Border Joint Ventures</li><li>Strategic Alliances</li><li>Industry and Operating Partners</li><li>Market Entry for Group Enterprises</li></ul>
+          <a class="btn btn--light" href="/global-access">See our global reach {{ page.icon("arrow")|safe }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Advantage -->
+<section class="section section--dark">
+  <div class="glow-orb glow-orb--a" aria-hidden="true"></div>
+  <div class="glow-orb glow-orb--b" aria-hidden="true"></div>
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Why the Group</span>
+      <h2 class="h2">The Alfa Global <span class="text-gradient">Advantage</span></h2>
+    </div>
+    <div class="grid grid-4">
+      <article class="adv reveal" style="--d:0">
+        <div class="adv__num">01</div>
+        <h3>{{ page.icon("coins")|safe }} Capital</h3>
+        <p>A long investment horizon, supported entirely by proprietary capital, allows decisions to rest on enterprise fundamentals rather than short-term market sentiment.</p>
+      </article>
+      <article class="adv reveal" style="--d:1">
+        <div class="adv__num">02</div>
+        <h3>{{ page.icon("bulb")|safe }} Insight</h3>
+        <p>Deep sectoral knowledge and extensive operating experience inform the identification of enterprises and projects with durable potential.</p>
+      </article>
+      <article class="adv reveal" style="--d:2">
+        <div class="adv__num">03</div>
+        <h3>{{ page.icon("chart")|safe }} Opportunities</h3>
+        <p>The Group originates, builds, and scales ventures in sectors where it already holds operating strength and established relationships.</p>
+      </article>
+      <article class="adv reveal" style="--d:3">
+        <div class="adv__num">04</div>
+        <h3>{{ page.icon("bolt")|safe }} Execution</h3>
+        <p>Experienced leadership, an integrated family of enterprises, and an international network enable decisive execution and value creation beyond capital.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Core values -->
+<section class="section">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Our Foundation</span>
+      <h2 class="h2">Core Values</h2>
+    </div>
+    <div class="values">
+      <div class="value reveal" style="--d:0">{{ page.icon("star")|safe }}<h3>Excellence</h3><p>Uncompromising standards.</p></div>
+      <div class="value reveal" style="--d:1">{{ page.icon("shield")|safe }}<h3>Integrity</h3><p>Transparency and ethical conduct.</p></div>
+      <div class="value reveal" style="--d:2">{{ page.icon("bulb")|safe }}<h3>Innovation</h3><p>Continuous evolution.</p></div>
+      <div class="value reveal" style="--d:3">{{ page.icon("users")|safe }}<h3>Partnership</h3><p>Enduring relationships.</p></div>
+      <div class="value reveal" style="--d:4">{{ page.icon("bolt")|safe }}<h3>Impact</h3><p>Meaningful contribution.</p></div>
+      <div class="value reveal" style="--d:5">{{ page.icon("eye")|safe }}<h3>Vision</h3><p>A multi-generational outlook.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Leadership preview (from NocoDB) -->
+{% if !team.is_empty() %}
+<section class="section section--soft">
+  <div class="container">
+    <div class="section-head reveal" style="display:flex;flex-wrap:wrap;gap:20px;align-items:flex-end;justify-content:space-between;max-width:none">
+      <div style="max-width:640px">
+        <span class="eyebrow">Leadership</span>
+        <h2 class="h2">Stewardship with decades of experience</h2>
+      </div>
+      <a class="btn btn--ghost" href="/team">Meet the full team {{ page.icon("arrow")|safe }}</a>
+    </div>
+    <div class="people">
+      {% for m in team.iter().take(4) %}
+      <a class="person reveal" style="--d:{{ loop.index0 }}" href="/team#member-{{ loop.index0 }}">
+        <div class="person__photo">
+          {% match m.image %}
+            {% when Some with (src) %}<img src="{{ src }}" alt="{{ m.name }}" loading="lazy">
+            {% when None %}<span class="person__initials">{{ m.initials() }}</span>
+          {% endmatch %}
+        </div>
+        <h3 class="person__name">{{ m.name }}</h3>
+        <p class="person__role no-justify">{{ m.role }}</p>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- CTA -->
+<section class="section section--tight">
+  <div class="container">
+    <div class="cta reveal reveal--zoom">
+      <div class="cta__dots" aria-hidden="true"></div>
+      <div>
+        <span class="eyebrow on-dark" style="color:#cfe3f3">Let’s build together</span>
+        <h2 class="h2">Partnering for Enduring Value</h2>
+        <p>The Group welcomes dialogue with founders, promoters, and strategic partners whose enterprises or projects align with its long-term investment focus.</p>
+        <div class="btn-row">
+          <a class="btn btn--light" href="/contact" data-magnetic>Contact the Group {{ page.icon("arrow")|safe }}</a>
+          <a class="btn btn--glass" href="/strategy">Our Strategy</a>
+        </div>
+      </div>
+      <div class="cta__rocket">{% include "partials/rocket.html" %}</div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

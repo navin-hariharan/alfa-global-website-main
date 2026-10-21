@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="page-hero">
+  <div class="hero__grid" aria-hidden="true"></div>
+  <div class="page-hero__orb" aria-hidden="true"></div>
+  <div class="page-hero__art" aria-hidden="true">{{ page.icon("globe")|safe }}</div>
+  <div class="container stagger">
+    <nav class="crumbs" aria-label="Breadcrumb" style="--d:0"><a href="/">Home</a><span aria-hidden="true">/</span><span>About</span></nav>
+    <h1 class="h1" style="--d:1">About the <span class="text-gradient">Group</span></h1>
+    <p class="lead" style="--d:2">Alfa Global Group of Companies: a diversified strategic investment and holding company, building institutions of lasting value.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container split">
+    <div class="visual-card reveal reveal--left">
+      <span class="visual-card__plate visual-card__plate--wide"><img src="/static/img/alfa-logo.png" alt="Alfa Global Group" width="1000" height="246" loading="lazy"></span>
+      <span class="visual-card__tag">Est. Chennai</span>
+    </div>
+    <div class="reveal reveal--right">
+      <span class="eyebrow">About Us</span>
+      <h2 class="h2">Who We Are</h2>
+      <div class="prose" style="margin-top:22px">
+        <p>Alfa Global Group is a diversified strategic investment and holding company founded on a vision of global transformation, innovation, and lasting impact. The Group deploys proprietary capital into transformative ideas, strategic ventures, and high-impact projects that shape industries and create sustainable value across generations.</p>
+        <p>Spanning strategic holdings and joint ventures as well as projects in infrastructure, maritime, manufacturing, agriculture, and technology, the Group’s activities reflect an enduring commitment to building institutions of lasting value.</p>
+        <p>The Group measures success not by financial outcomes alone, but by its capacity to foster innovation, empower communities, and leave a lasting legacy. Combining global perspective with disciplined execution, Alfa Global Group continues to transform considered ideas into enterprises that help define the future of business and society.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="container grid grid-2">
+    <article class="card reveal" data-spot>
+      <span class="icon-badge">{{ page.icon("eye")|safe }}</span>
+      <span class="eyebrow">Our Vision</span>
+      <h3 class="h3">A global catalyst for transformation</h3>
+      <p style="margin-top:12px">To be a global catalyst for transformation, shaping industries, strengthening legacies, and creating sustainable value that transcends generations.</p>
+    </article>
+    <article class="card reveal" style="--d:1" data-spot>
+      <span class="icon-badge">{{ page.icon("target")|safe }}</span>
+      <span class="eyebrow">Our Mission</span>
+      <h3 class="h3">Enduring value, built together</h3>
+      <p style="margin-top:12px">To deploy the Group’s proprietary capital into transformative ideas, strategic ventures, and high-impact projects that drive innovation and growth across industries, and, through global perspective, disciplined execution, and unwavering integrity, to build enduring value alongside its enterprises, partners, and communities.</p>
+    </article>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">The enterprises that constitute the Group</span>
+      <h2 class="h2">Our Companies</h2>
+    </div>
+    <div class="grid grid-3">
+      {% for c in page.companies %}
+      <a class="card card--tilt enterprise reveal" style="--d:{{ loop.index0 % 3 }}" href="/{{ c.slug }}" data-tilt>
+        <div class="enterprise__logo">
+          <img src="{{ c.logo }}" alt="{{ c.name }} logo" loading="lazy" data-logo>
+        </div>
+        <span class="enterprise__sector">{{ c.sector }}</span>
+        <h3 class="h3">{{ c.name }}</h3>
+        <p>{{ c.summary }}</p>
+        <span class="link-arrow">Learn more {{ page.icon("arrow")|safe }}</span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section section--dark">
+  <div class="glow-orb glow-orb--a" aria-hidden="true"></div>
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">What sets us apart</span>
+      <h2 class="h2">The Alfa Global <span class="text-gradient">Distinction</span></h2>
+    </div>
+    <div class="grid grid-4">
+      <article class="adv reveal"><h3>{{ page.icon("layers")|safe }} Diversified Enterprise Base</h3><p>An established presence across maritime, technology, agriculture, and security.</p></article>
+      <article class="adv reveal" style="--d:1"><h3>{{ page.icon("users")|safe }} Seasoned Leadership</h3><p>Experienced leadership supported by an international partner network.</p></article>
+      <article class="adv reveal" style="--d:2"><h3>{{ page.icon("bulb")|safe }} Innovation Led</h3><p>Technology, cyber security, and sustainable practices embedded across the Group.</p></article>
+      <article class="adv reveal" style="--d:3"><h3>{{ page.icon("anchor")|safe }} Long-Term Ownership</h3><p>Patient capital and an owner’s perspective in every enterprise the Group supports.</p></article>
+    </div>
+  </div>
+</section>
+
+{% include "partials/cta.html" %}
+{% endblock %}

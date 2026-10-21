@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="page-hero">
+  <div class="hero__grid" aria-hidden="true"></div>
+  <div class="page-hero__orb" aria-hidden="true"></div>
+  <div class="page-hero__art" aria-hidden="true">{{ page.icon("globe")|safe }}</div>
+  <div class="container stagger">
+    <nav class="crumbs" aria-label="Breadcrumb" style="--d:0"><a href="/">Home</a><span aria-hidden="true">/</span><span>Global Access</span></nav>
+    <h1 class="h1 wide" style="--d:1">Global <span class="text-gradient">Access</span></h1>
+    <p class="lead" style="--d:2">Connecting the Group’s enterprises to international markets, partners and cross-border opportunity.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container split">
+    <div class="reveal reveal--left">
+      <span class="eyebrow">Our Expertise</span>
+      <h2 class="h2">Connecting Enterprises to Global Opportunity</h2>
+      <p class="lead" style="margin-top:22px">A defining strength of Alfa Global Group lies in connecting its enterprises with international markets, partners, and cross-border opportunities. Its global footprint bridges local expertise and international scale, enabling the Group and its partners to grow beyond national boundaries.</p>
+      <p class="muted">The Group engages with partners across Asia, Europe, the Middle East, and North America in strategic holdings, maritime, agricultural trade, and cyber security.</p>
+    </div>
+    <div class="region-map reveal reveal--right" aria-label="Map of the Group's regions of engagement" role="img">
+      <canvas data-globe></canvas>
+      <div class="region-map__legend"><span>Asia</span><span>Middle East</span><span>Europe</span><span>North America</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="container grid grid-2">
+    <article class="card reveal" data-spot>
+      <span class="icon-badge">{{ page.icon("handshake")|safe }}</span>
+      <h3 class="h3">Strategic Holdings and Cross-Border Partnerships</h3>
+      <p class="member__role">Through Alfa Star Dynamics</p>
+      <ul class="checklist"><li>Joint ventures with international partners</li><li>Long-term strategic interests in industrial and maritime enterprises</li><li>Market entry for group enterprises</li></ul>
+    </article>
+    <article class="card reveal" style="--d:1" data-spot>
+      <span class="icon-badge">{{ page.icon("ship")|safe }}</span>
+      <h3 class="h3">Maritime and Logistics</h3>
+      <p class="member__role">Through Dhanveir Groups Shipping</p>
+      <ul class="checklist"><li>Indian-flagged vessels across key cargo segments</li><li>Dry bulk transportation of sand, coal, and minerals</li><li>Partnerships across ports, logistics, and trade routes</li></ul>
+    </article>
+    <article class="card reveal" data-spot>
+      <span class="icon-badge">{{ page.icon("leaf")|safe }}</span>
+      <h3 class="h3">Agriculture and Natural Resources Trade</h3>
+      <p class="member__role">Through MK Dairy Farms Pvt Ltd</p>
+      <ul class="checklist"><li>Sustainable agricultural practices aligned with international standards</li><li>Export-ready produce for global markets</li><li>Partnerships that strengthen the international agricultural trade</li></ul>
+    </article>
+    <article class="card reveal" style="--d:1" data-spot>
+      <span class="icon-badge">{{ page.icon("shield")|safe }}</span>
+      <h3 class="h3">Cyber Security Across Borders</h3>
+      <p class="member__role">Through Cyberhakz Pvt Ltd</p>
+      <ul class="checklist"><li>Enterprise-grade cyber security for global operations</li><li>Compliance with international frameworks, including GDPR, ISO, and HIPAA</li><li>Threat detection and prevention for multinational organisations</li></ul>
+    </article>
+  </div>
+</section>
+
+<section class="section section--dark">
+  <div class="glow-orb glow-orb--a" aria-hidden="true"></div>
+  <div class="glow-orb glow-orb--b" aria-hidden="true"></div>
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Reach</span>
+      <h2 class="h2">The Value of the Group’s Global Reach</h2>
+    </div>
+    <div class="grid grid-2">
+      <div class="big-stat reveal"><div class="big-stat__value text-gradient" data-count="10" data-suffix="+">10+</div><p>Engagement across more than ten countries through strategic partnerships</p></div>
+      <div class="big-stat reveal" style="--d:1"><div class="big-stat__value text-gradient" data-count="30" data-suffix="+">30+</div><p>More than three decades of combined leadership experience across international markets</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--tight">
+  <div class="container">
+    <div class="cta reveal reveal--zoom">
+      <div class="cta__dots" aria-hidden="true"></div>
+      <div>
+        <h2 class="h2">Our Promise</h2>
+        <p>Alfa Global Group looks beyond capital to create opportunity across industries and borders. Through innovation, disciplined execution, and a global vision, the Group delivers growth and impact designed to endure.</p>
+        <div class="btn-row"><a class="btn btn--light" href="/contact" data-magnetic>Connect With Us {{ page.icon("arrow")|safe }}</a></div>
+      </div>
+      <div class="cta__rocket">{% include "partials/rocket.html" %}</div>
+    </div>
+  </div>
+</section>
+{% endblock %}

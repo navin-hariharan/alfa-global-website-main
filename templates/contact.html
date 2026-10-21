@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="page-hero">
+  <div class="hero__grid" aria-hidden="true"></div>
+  <div class="page-hero__orb" aria-hidden="true"></div>
+  <div class="page-hero__art" aria-hidden="true">{{ page.icon("mail")|safe }}</div>
+  <div class="container stagger">
+    <nav class="crumbs" aria-label="Breadcrumb" style="--d:0"><a href="/">Home</a><span aria-hidden="true">/</span><span>Contact</span></nav>
+    <h1 class="h1" style="--d:1">Get in <span class="text-gradient">Touch</span></h1>
+    <p class="lead" style="--d:2">The Group welcomes enquiries regarding strategic partnerships, joint ventures, and enterprise proposals.</p>
+  </div>
+</section>
+
+<section class="section" id="enquiry">
+  <div class="container contact-grid">
+    <div class="card reveal" style="padding:clamp(24px,4vw,48px)">
+      <span class="eyebrow">Write to us</span>
+      <h2 class="h2" style="font-size:clamp(1.8rem,1.4rem + 1.4vw,2.6rem);margin-bottom:28px">Send us a Message</h2>
+
+      {% if status == "sent" %}
+      <div class="alert alert--ok" role="status" style="margin-bottom:22px">{{ page.icon("check")|safe }}<p>Thank you. Your enquiry has been received, and a member of the Group will respond shortly.</p></div>
+      {% else if status == "invalid" %}
+      <div class="alert alert--err" role="alert" style="margin-bottom:22px">{{ page.icon("close")|safe }}<p>Please enter your name, a valid email address and a message.</p></div>
+      {% else if status == "error" %}
+      <div class="alert alert--err" role="alert" style="margin-bottom:22px">{{ page.icon("close")|safe }}<p>Your enquiry could not be submitted. Please try again, or write to contact@alfaglobalwealth.com.</p></div>
+      {% endif %}
+
+      <form class="form" method="post" action="/contact" data-form>
+        <div class="form__row">
+          <div class="field"><label for="f-name">Full Name *</label><input id="f-name" name="name" autocomplete="name" required maxlength="200"></div>
+          <div class="field"><label for="f-email">Email Address *</label><input id="f-email" name="email" type="email" autocomplete="email" required maxlength="200"></div>
+        </div>
+        <div class="form__row">
+          <div class="field"><label for="f-phone">Phone Number</label><input id="f-phone" name="phone" type="tel" autocomplete="tel" maxlength="40"></div>
+          <div class="field">
+            <label for="f-topic">Topic</label>
+            <select id="f-topic" name="topic">
+              <option value="">Select a topic</option>
+              {% for t in topics.iter() %}<option>{{ t }}</option>{% endfor %}
+            </select>
+          </div>
+        </div>
+        <div class="field"><label for="f-message">Your Message *</label><textarea id="f-message" name="message" required maxlength="5000"></textarea></div>
+        <div class="hp" aria-hidden="true"><label for="f-web">Leave this empty</label><input id="f-web" name="company_website" tabindex="-1" autocomplete="off"></div>
+        <button class="btn" type="submit">Send Message {{ page.icon("arrow")|safe }}</button>
+      </form>
+    </div>
+
+    <div class="grid" style="gap:16px">
+      <a class="card info-card reveal" href="tel:+917305626795" data-spot>
+        <span class="icon-badge">{{ page.icon("phone")|safe }}</span>
+        <div><h3>Phone</h3><p>+91 44-2224-2929<br>+91 73580-65999</p></div>
+      </a>
+      <a class="card info-card reveal" style="--d:1" href="mailto:contact@alfaglobalwealth.com" data-spot>
+        <span class="icon-badge">{{ page.icon("mail")|safe }}</span>
+        <div><h3>Email</h3><p>contact@alfaglobalwealth.com</p></div>
+      </a>
+      <div class="card info-card reveal" style="--d:2" data-spot>
+        <span class="icon-badge">{{ page.icon("pin")|safe }}</span>
+        <div><h3>Chennai (HQ)</h3><p>No. 6/8, Second Floor, Lakshmi Nagar, 10th Street, Nanganallur, Chennai - 600 061.</p></div>
+      </div>
+      <div class="card info-card reveal" style="--d:3" data-spot>
+        <span class="icon-badge">{{ page.icon("clock")|safe }}</span>
+        <div><h3>Business Hours</h3><p>Mon - Fri: 9:00 AM - 6:00 PM</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--tight" style="padding-top:0">
+  <div class="container">
+    <div class="map reveal">
+      <iframe title="Alfa Global Group office in Nanganallur, Chennai" loading="lazy" referrerpolicy="no-referrer"
+        src="https://www.openstreetmap.org/export/embed.html?bbox=80.1719%2C12.9737%2C80.2019%2C12.9897&amp;layer=mapnik&amp;marker=12.9817%2C80.1869"></iframe>
+    </div>
+  </div>
+</section>
+{% endblock %}

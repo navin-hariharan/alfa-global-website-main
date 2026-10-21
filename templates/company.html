@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="page-hero">
+  <div class="hero__grid" aria-hidden="true"></div>
+  <div class="page-hero__orb" aria-hidden="true"></div>
+  <div class="container stagger">
+    <nav class="crumbs" aria-label="Breadcrumb" style="--d:0"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/about">Group</a><span aria-hidden="true">/</span><span>{{ company.short }}</span></nav>
+    <span class="company-badge" style="--d:1"><img src="{{ company.logo }}" alt="{{ company.name }} logo" data-logo></span>
+    <h1 class="h1 wide" style="--d:1">{{ company.name }}</h1>
+    <p class="lead" style="--d:2">{{ company.tagline }}</p>
+    <div class="btn-row" style="--d:3">
+      <a class="btn btn--light" href="{{ company.website }}" target="_blank" rel="noopener" data-magnetic>Visit website {{ page.icon("external")|safe }}</a>
+      <a class="btn btn--glass" href="/contact">Contact the Group</a>
+    </div>
+  </div>
+</section>
+
+{% for s in company.sections %}
+{% if s.kind == "lead" %}
+<section class="section{% if loop.index0 % 2 == 1 %} section--soft{% endif %}">
+  <div class="container split{% if loop.index0 % 4 == 3 %} split--flip{% endif %}">
+    <div class="reveal reveal--left">
+      <span class="eyebrow">{{ s.eyebrow }}</span>
+      <h2 class="h2">{{ s.title }}</h2>
+      <div class="prose" style="margin-top:22px">{% for p in s.paras %}<p>{{ p }}</p>{% endfor %}</div>
+    </div>
+    <div class="visual-card reveal reveal--right">
+      <span class="visual-card__plate"><img src="{{ company.logo }}" alt="{{ company.name }} logo" loading="lazy" data-logo></span>
+      <span class="visual-card__tag">{{ company.sector }}</span>
+    </div>
+  </div>
+</section>
+
+{% else if s.kind == "statement" %}
+<section class="section section--tight">
+  <div class="container">
+    <div class="statement reveal reveal--zoom">
+      <div class="glow-orb glow-orb--a" aria-hidden="true"></div>
+      <div>
+        <span class="eyebrow on-dark">{{ s.eyebrow }}</span>
+        <h2>{{ s.title }}</h2>
+      </div>
+      <div>
+        {% for p in s.paras %}<p>{{ p }}</p>{% endfor %}
+        {% if !s.items.is_empty() %}<ul class="checklist">{% for i in s.items %}<li>{{ i }}</li>{% endfor %}</ul>{% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% else if s.kind == "list" %}
+<section class="section{% if loop.index0 % 2 == 1 %} section--soft{% endif %}">
+  <div class="container split">
+    <div class="reveal reveal--left">
+      <span class="eyebrow">{{ s.eyebrow }}</span>
+      <h2 class="h2">{{ s.title }}</h2>
+      <div class="prose" style="margin-top:22px">{% for p in s.paras %}<p>{{ p }}</p>{% endfor %}</div>
+    </div>
+    <div class="card reveal reveal--right" data-spot>
+      <ul class="checklist">{% for i in s.items %}<li>{{ i }}</li>{% endfor %}</ul>
+      {% if !s.outro.is_empty() %}<div style="margin-top:22px;padding-top:22px;border-top:1px solid var(--line)">{% for p in s.outro %}<p class="muted">{{ p }}</p>{% endfor %}</div>{% endif %}
+    </div>
+  </div>
+</section>
+
+{% else %}
+<section class="section{% if loop.index0 % 2 == 1 %} section--soft{% endif %}">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">{{ s.eyebrow }}</span>
+      <h2 class="h2">{{ s.title }}</h2>
+      {% for p in s.paras %}<p class="lead">{{ p }}</p>{% endfor %}
+    </div>
+    <div class="grid {% if s.cards.len() == 2 %}grid-2{% else if s.cards.len() == 4 %}grid-4{% else %}grid-3{% endif %}">
+      {% for c in s.cards %}
+      <article class="card reveal" style="--d:{{ loop.index0 % 4 }}" data-spot>
+        <span class="icon-badge">{{ page.icon(c.icon)|safe }}</span>
+        <h3 class="h3">{{ c.title }}</h3>
+        {% if !c.desc.is_empty() %}<p>{{ c.desc }}</p>{% endif %}
+        {% if !c.items.is_empty() %}<ul class="checklist" style="margin-top:16px">{% for i in c.items %}<li>{{ i }}</li>{% endfor %}</ul>{% endif %}
+      </article>
+      {% endfor %}
+    </div>
+    {% if !s.outro.is_empty() %}<div class="prose reveal" style="margin-top:36px">{% for p in s.outro %}<p>{{ p }}</p>{% endfor %}</div>{% endif %}
+  </div>
+</section>
+{% endif %}
+{% endfor %}
+
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Alfa Global Group</span>
+      <h2 class="h2">More from the Group</h2>
+    </div>
+    <div class="grid grid-3">
+      {% for c in others.iter().take(3) %}
+      <a class="card card--tilt enterprise reveal" style="--d:{{ loop.index0 }}" href="/{{ c.slug }}" data-tilt>
+        <div class="enterprise__logo"><img src="{{ c.logo }}" alt="{{ c.name }} logo" loading="lazy" data-logo></div>
+        <span class="enterprise__sector">{{ c.sector }}</span>
+        <h3 class="h3">{{ c.name }}</h3>
+        <p>{{ c.summary }}</p>
+        <span class="link-arrow">Explore {{ page.icon("arrow")|safe }}</span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

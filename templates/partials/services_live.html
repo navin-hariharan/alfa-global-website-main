@@ -1,0 +1,85 @@
+{% if services.is_empty() %}
+<section class="section">
+  <div class="container empty-state reveal">
+    {{ page.icon("layers")|safe }}
+    <h2 class="h3">Our services are being updated</h2>
+    <p>Please check back shortly, or <a href="/contact">get in touch</a> with the Group.</p>
+  </div>
+</section>
+{% else %}
+<section class="section svc-list">
+  <div class="container">
+    <div class="svc-grid">
+      {% for s in services.iter() %}
+      <article class="svc-card reveal" id="{{ s.slug }}" style="--d:{{ loop.index0 % 2 }}" data-spot>
+        <div class="svc-card__top{% if s.image.is_some() %} has-image{% endif %}" aria-hidden="true">
+          {% match s.image %}{% when Some with (src) %}<img src="{{ src }}" alt="" loading="lazy">{% when None %}{% endmatch %}
+          <span class="svc-card__num">{{ s.number(loop.index) }}</span>
+          {% if !s.category.is_empty() %}<span class="svc-card__tag">{{ s.category }}</span>{% endif %}
+        </div>
+        <div class="svc-card__body">
+          <h2 class="svc-card__title">{{ s.title }}</h2>
+          {% if !s.tagline.is_empty() %}<p class="svc-card__short">{{ s.tagline }}</p>{% endif %}
+          {% if s.has_more() %}
+          <button class="btn btn--sm svc-card__more" type="button" data-profile="service-{{ loop.index0 }}" aria-haspopup="dialog">Read more {{ page.icon("arrow")|safe }}</button>
+          {% endif %}
+        </div>
+      </article>
+
+      {% if s.has_more() %}
+      <dialog class="profile svc-dialog" id="service-{{ loop.index0 }}" aria-labelledby="service-{{ loop.index0 }}-title">
+        <button class="profile__close" type="button" data-close aria-label="Close">{{ page.icon("close")|safe }}</button>
+        <div class="profile__inner">
+          <header class="svc-dialog__head{% if s.image.is_some() %} has-image{% endif %}">
+            {% match s.image %}{% when Some with (src) %}<img src="{{ src }}" alt="" loading="lazy">{% when None %}{% endmatch %}
+            <div class="svc-dialog__headtext">
+              <span class="svc-dialog__meta"><b>{{ s.number(loop.index) }}</b>{% if !s.category.is_empty() %} {{ s.category }}{% endif %}</span>
+              <h2 id="service-{{ loop.index0 }}-title">{{ s.title }}</h2>
+              {% if !s.tagline.is_empty() %}<p>{{ s.tagline }}</p>{% endif %}
+            </div>
+          </header>
+          <div class="profile__body svc-dialog__body">
+            {% for b in s.description %}
+              {% if b.is_list %}<ul class="checklist">{% for i in b.items %}<li>{{ i }}</li>{% endfor %}</ul>
+              {% else %}{% for i in b.items %}<p>{{ i }}</p>{% endfor %}{% endif %}
+            {% endfor %}
+
+            {% if !s.features.is_empty() %}
+            <div class="svc__part">
+              <h3 class="svc__label">Key areas</h3>
+              <ul class="svc-pills">{% for f in s.features %}<li>{{ f }}</li>{% endfor %}</ul>
+            </div>
+            {% endif %}
+
+            {% for d in s.details %}
+            <div class="svc__part">
+              <h3 class="svc__label">{{ d.label }}</h3>
+              {% for b in d.blocks %}
+                {% if b.is_list %}<ul class="checklist">{% for i in b.items %}<li>{{ i }}</li>{% endfor %}</ul>
+                {% else %}{% for i in b.items %}<p>{{ i }}</p>{% endfor %}{% endif %}
+              {% endfor %}
+              {% match d.link %}{% when Some with (href) %}<a class="link-arrow" href="{{ href }}" target="_blank" rel="noopener">Open {{ page.icon("external")|safe }}</a>{% when None %}{% endmatch %}
+            </div>
+            {% endfor %}
+
+            {% if !s.gallery.is_empty() %}
+            <div class="svc__gallery">
+              {% for g in s.gallery %}<figure class="svc__shot"><img src="{{ g }}" alt="{{ s.title }}" loading="lazy"></figure>{% endfor %}
+            </div>
+            {% endif %}
+
+            <div class="svc-dialog__foot">
+              {% match s.link %}{% when Some with (href) %}
+              <a class="btn btn--sm" href="{{ href }}"{% if href.starts_with("http") %} target="_blank" rel="noopener"{% endif %}>Learn more {{ page.icon("arrow")|safe }}</a>
+              {% when None %}{% endmatch %}
+              <a class="btn btn--sm btn--ghost" href="/contact">Contact the Group</a>
+            </div>
+          </div>
+        </div>
+      </dialog>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}

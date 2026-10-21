@@ -1,0 +1,56 @@
+<header class="nav" data-nav>
+  <div class="nav__inner">
+    <a class="nav__brand" href="/" aria-label="Alfa Global Group home">
+      <img src="/static/img/alfa-logo.png" alt="Alfa Global Group" width="1000" height="246">
+    </a>
+
+    <nav class="nav__links" aria-label="Main">
+      <a class="nav__link" href="/" {% if page.is("/") %}aria-current="page"{% endif %}>Home</a>
+      <a class="nav__link" href="/about" {% if page.is("/about") %}aria-current="page"{% endif %}>About</a>
+      <div class="nav__item">
+        <button class="nav__link" type="button" aria-haspopup="true" {% if page.in_group() %}aria-current="page"{% endif %}>Group {{ page.icon("chevron")|safe }}</button>
+        <div class="mega" role="menu">
+          {% for c in page.companies %}
+          <a class="mega__link" role="menuitem" href="/{{ c.slug }}">
+            <span class="mega__logo"><img src="{{ c.logo }}" alt="" loading="lazy" data-logo></span>
+            <span><span class="mega__name">{{ c.name }}</span><span class="mega__sector">{{ c.sector }}</span></span>
+          </a>
+          {% endfor %}
+        </div>
+      </div>
+      <a class="nav__link" href="/services" {% if page.is("/services") %}aria-current="page"{% endif %}>Services</a>
+      <a class="nav__link" href="/strategy" {% if page.is("/strategy") %}aria-current="page"{% endif %}>Strategy</a>
+      <a class="nav__link" href="/global-access" {% if page.is("/global-access") %}aria-current="page"{% endif %}>Global Access</a>
+      <a class="nav__link" href="/team" {% if page.is("/team") %}aria-current="page"{% endif %}>Team</a>
+    </nav>
+
+    <a class="btn btn--sm nav__cta" href="/contact">Contact the Group {{ page.icon("arrow")|safe }}</a>
+
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu" data-menu-toggle>
+      <span class="burger" aria-hidden="true"><span></span><span></span><span></span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobile-menu" data-menu>
+  <ul class="mobile-menu__list">
+    <li><a href="/" style="--i:0" {% if page.is("/") %}aria-current="page"{% endif %}>Home {{ page.icon("arrow")|safe }}</a></li>
+    <li><a href="/about" style="--i:1" {% if page.is("/about") %}aria-current="page"{% endif %}>About {{ page.icon("arrow")|safe }}</a></li>
+    <li><a href="/services" style="--i:2" {% if page.is("/services") %}aria-current="page"{% endif %}>Services {{ page.icon("arrow")|safe }}</a></li>
+    <li><a href="/strategy" style="--i:3" {% if page.is("/strategy") %}aria-current="page"{% endif %}>Strategy {{ page.icon("arrow")|safe }}</a></li>
+    <li><a href="/global-access" style="--i:4" {% if page.is("/global-access") %}aria-current="page"{% endif %}>Global Access {{ page.icon("arrow")|safe }}</a></li>
+    <li><a href="/team" style="--i:5" {% if page.is("/team") %}aria-current="page"{% endif %}>Team {{ page.icon("arrow")|safe }}</a></li>
+    <li><a href="/contact" style="--i:6" {% if page.is("/contact") %}aria-current="page"{% endif %}>Contact {{ page.icon("arrow")|safe }}</a></li>
+  </ul>
+  <p class="mobile-menu__group">Alfa Global Group</p>
+  <ul class="mobile-menu__companies">
+    {% for c in page.companies %}
+    <li><a href="/{{ c.slug }}"><span class="mega__logo"><img src="{{ c.logo }}" alt="" loading="lazy" data-logo></span> {{ c.name }}</a></li>
+    {% endfor %}
+  </ul>
+  <div class="mobile-menu__foot">
+    <a href="tel:+917305626795">+91 44-2224-2929</a>
+    <a href="mailto:contact@alfaglobalwealth.com">contact@alfaglobalwealth.com</a>
+    <a class="btn btn--light" href="/contact">Contact the Group {{ page.icon("arrow")|safe }}</a>
+  </div>
+</div>

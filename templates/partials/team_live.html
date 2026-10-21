@@ -1,0 +1,65 @@
+{% if team.is_empty() %}
+<section class="section">
+  <div class="container empty-state reveal">
+    {{ page.icon("users")|safe }}
+    <h2 class="h3">Our leadership profiles are being updated</h2>
+    <p>Please check back shortly.</p>
+  </div>
+</section>
+{% else %}
+<section class="section">
+  <div class="container">
+    <div class="team-grid">
+      {% for m in team.iter() %}
+      <article class="card member reveal" id="member-{{ loop.index0 }}" style="--d:{{ loop.index0 % 3 }}" data-spot>
+        <div class="person__photo">
+          {% match m.image %}
+            {% when Some with (src) %}<img src="{{ src }}" alt="{{ m.name }}" loading="lazy">
+            {% when None %}<span class="person__initials">{{ m.initials() }}</span>
+          {% endmatch %}
+        </div>
+        <div class="member__body">
+          <h3>{{ m.name }}</h3>
+          <p class="member__role">{{ m.role }}</p>
+          <p class="member__bio">{{ m.short_bio }}</p>
+          {% if !m.bio.is_empty() %}
+          <button class="link-arrow member__more" type="button" data-profile="profile-{{ loop.index0 }}">Read full profile {{ page.icon("arrow")|safe }}</button>
+          {% endif %}
+        </div>
+      </article>
+
+      {% if !m.bio.is_empty() %}
+      <dialog class="profile" id="profile-{{ loop.index0 }}" aria-labelledby="profile-{{ loop.index0 }}-name">
+        <button class="profile__close" type="button" data-close aria-label="Close profile">{{ page.icon("close")|safe }}</button>
+        <div class="profile__inner">
+          <aside class="profile__side">
+            <div class="person__photo">
+              {% match m.image %}
+                {% when Some with (src) %}<img src="{{ src }}" alt="" loading="lazy">
+                {% when None %}<span class="person__initials">{{ m.initials() }}</span>
+              {% endmatch %}
+            </div>
+            <h2 id="profile-{{ loop.index0 }}-name">{{ m.name }}</h2>
+            <p>{{ m.role }}</p>
+            {% match m.linkedin %}
+              {% when Some with (url) %}<a class="btn btn--glass btn--sm" href="{{ url }}" target="_blank" rel="noopener" style="margin-top:16px">{{ page.icon("linkedin")|safe }} LinkedIn</a>
+              {% when None %}
+            {% endmatch %}
+          </aside>
+          <div class="profile__body">
+            {% for b in m.bio %}
+              {% if b.is_list %}
+              <ul>{% for item in b.items %}<li>{{ item }}</li>{% endfor %}</ul>
+              {% else %}
+              {% for item in b.items %}<p>{{ item }}</p>{% endfor %}
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </dialog>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}

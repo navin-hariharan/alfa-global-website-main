@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="page-hero">
+  <div class="hero__grid" aria-hidden="true"></div>
+  <div class="page-hero__orb" aria-hidden="true"></div>
+  <div class="page-hero__art" aria-hidden="true">{{ page.icon("users")|safe }}</div>
+  <div class="container stagger">
+    <nav class="crumbs" aria-label="Breadcrumb" style="--d:0"><a href="/">Home</a><span aria-hidden="true">/</span><span>Team</span></nav>
+    <h1 class="h1 wide" style="--d:1">The Leadership of <span class="text-gradient">Alfa Global Group</span></h1>
+    <p class="lead" style="--d:2">The Group’s leadership brings decades of combined experience across capital markets, maritime operations, cyber security, law, and enterprise building, providing the stewardship that guides each of its enterprises.</p>
+  </div>
+</section>
+
+<div data-live="/team/live">
+{% include "partials/team_live.html" %}
+</div>
+
+{% include "partials/cta.html" %}
+{% endblock %}

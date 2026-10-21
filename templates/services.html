@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="page-hero svc-hero">
+  <div class="hero__grid" aria-hidden="true"></div>
+  <div class="page-hero__orb" aria-hidden="true"></div>
+  <div class="container svc-hero__inner">
+    <div class="stagger">
+      <nav class="crumbs" aria-label="Breadcrumb" style="--d:0"><a href="/">Home</a><span aria-hidden="true">/</span><span>Services</span></nav>
+      <h1 class="h1" style="--d:1">Our <span class="text-gradient">Services</span></h1>
+      <p class="lead" style="--d:2">The core activities of the Group’s enterprises, each carried out by its own management under the Group’s long-term ownership.</p>
+    </div>
+    {% if !services.is_empty() %}
+    <ol class="svc-toc stagger" aria-label="Services on this page">
+      {% for s in services.iter() %}
+      <li style="--d:{{ loop.index0 + 2 }}"><a href="#{{ s.slug }}"><span>{{ s.number(loop.index) }}</span>{{ s.title }}{{ page.icon("arrow")|safe }}</a></li>
+      {% endfor %}
+    </ol>
+    {% endif %}
+  </div>
+</section>
+
+<div data-live="/services/live">
+{% include "partials/services_live.html" %}
+</div>
+
+<section class="section section--tight section--soft">
+  <div class="container center reveal" style="text-align:center">
+    <p class="lead" style="max-width:720px;margin:0 auto 28px">Enterprises and projects aligned with the Group’s investment focus are invited to initiate a dialogue.</p>
+    <a class="btn" href="/contact" data-magnetic>Start a Conversation {{ page.icon("arrow")|safe }}</a>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">What sets us apart</span>
+      <h2 class="h2">The Alfa Global Distinction</h2>
+    </div>
+    <div class="grid grid-4">
+      <article class="card reveal" data-spot><span class="icon-badge">{{ page.icon("layers")|safe }}</span><h3 class="h3">Diversified Enterprise Base</h3><p>Enterprises spanning maritime, technology, agriculture, and security.</p></article>
+      <article class="card reveal" style="--d:1" data-spot><span class="icon-badge">{{ page.icon("clock")|safe }}</span><h3 class="h3">30+ Years of Leadership</h3><p>More than three decades of combined leadership experience across industries and international markets.</p></article>
+      <article class="card reveal" style="--d:2" data-spot><span class="icon-badge">{{ page.icon("anchor")|safe }}</span><h3 class="h3">Long-Term Ownership</h3><p>Patient ownership and active stewardship of every enterprise within the Group.</p></article>
+      <article class="card reveal" style="--d:3" data-spot><span class="icon-badge">{{ page.icon("chip")|safe }}</span><h3 class="h3">Innovation Led</h3><p>Execution informed by financial technology, data, and cyber security expertise.</p></article>
+    </div>
+  </div>
+</section>
+
+{% include "partials/cta.html" %}
+{% endblock %}

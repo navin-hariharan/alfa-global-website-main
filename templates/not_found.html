@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="page-hero nf">
+  <div class="hero__grid" aria-hidden="true"></div>
+  <div class="page-hero__orb" aria-hidden="true"></div>
+  <div class="container stagger" style="text-align:center">
+    <div class="nf__code text-gradient" style="--d:0">404</div>
+    <h1 class="h2" style="--d:1;margin:12px auto 0;max-width:none">This page has sailed on</h1>
+    <p class="lead" style="--d:2;margin-inline:auto;text-align:center">The page you were looking for could not be found.</p>
+    <div class="btn-row" style="--d:3;justify-content:center"><a class="btn btn--light" href="/">Back to home {{ page.icon("arrow")|safe }}</a></div>
+  </div>
+</section>
+{% endblock %}

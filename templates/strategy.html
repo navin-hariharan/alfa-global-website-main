@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="page-hero">
+  <div class="hero__grid" aria-hidden="true"></div>
+  <div class="page-hero__orb" aria-hidden="true"></div>
+  <div class="page-hero__art" aria-hidden="true">{{ page.icon("compass")|safe }}</div>
+  <div class="container stagger">
+    <nav class="crumbs" aria-label="Breadcrumb" style="--d:0"><a href="/">Home</a><span aria-hidden="true">/</span><span>Strategy</span></nav>
+    <h1 class="h1" style="--d:1">Our <span class="text-gradient">Strategy</span></h1>
+    <p class="lead" style="--d:2">Innovation, disciplined risk management and long-term vision, applied as one approach across every enterprise of the Group.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container container--narrow center reveal" style="text-align:center">
+    <span class="eyebrow">Approach</span>
+    <h2 class="h2">Our Strategic Approach</h2>
+    <p class="lead" style="margin-top:22px">Strategy informs every decision at Alfa Global Group. Although its enterprises span strategic holdings, technology, infrastructure, maritime, manufacturing, agriculture, and cyber security, each is guided by a unified approach that combines innovation, disciplined risk management, and long-term vision to deliver sustainable growth and impact.</p>
+  </div>
+</section>
+
+<section class="section section--soft">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Five principles</span>
+      <h2 class="h2">Strategic Pillars</h2>
+    </div>
+    <div>
+      <div class="pillar reveal"><span class="pillar__num">01</span><div><h3 class="h3">Diversification for Stability</h3><p>The Group maintains a balanced presence across industries to mitigate concentration risk and broaden opportunity. Diversification across strategic holdings, maritime, sustainable agriculture, infrastructure, and cyber security underpins the Group’s resilience.</p></div></div>
+      <div class="pillar reveal"><span class="pillar__num">02</span><div><h3 class="h3">Disciplined Opportunity Selection</h3><p>The Group’s strategy rests on identifying opportunities early and committing to enterprises and projects where it can contribute capital, expertise, and strategic partnerships.</p></div></div>
+      <div class="pillar reveal"><span class="pillar__num">03</span><div><h3 class="h3">Innovation and Technology</h3><p>Technology platforms, data, and advanced digital tools are embedded across the Group’s enterprises, strengthening efficiency, transparency, and the quality of decision-making.</p></div></div>
+      <div class="pillar reveal"><span class="pillar__num">04</span><div><h3 class="h3">Global Expansion with Local Impact</h3><p>While the Group’s presence extends across domestic and international markets, its focus remains on meaningful local impact, investing in industries that strengthen communities and build sustainable long-term value.</p></div></div>
+      <div class="pillar reveal"><span class="pillar__num">05</span><div><h3 class="h3">Responsibility and Governance</h3><p>Sound governance and responsible stewardship are fundamental to the Group. From sustainable agricultural projects to compliance-led technology operations, growth is aligned with environmental and social responsibility.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">How it is carried out</span>
+      <h2 class="h2">Strategic Execution</h2>
+    </div>
+    <div class="grid grid-4">
+      <article class="card reveal" data-spot><span class="icon-badge">{{ page.icon("search")|safe }}</span><h3 class="h3">Rigorous Evaluation</h3><p>Comprehensive analysis and due diligence inform risk management and opportunity selection.</p></article>
+      <article class="card reveal" style="--d:1" data-spot><span class="icon-badge">{{ page.icon("handshake")|safe }}</span><h3 class="h3">Strategic Partnerships</h3><p>Collaboration with founders, operators, and industry leaders worldwide.</p></article>
+      <article class="card reveal" style="--d:2" data-spot><span class="icon-badge">{{ page.icon("chart")|safe }}</span><h3 class="h3">Scalable Enterprises</h3><p>Ventures structured to scale with evolving markets and opportunities.</p></article>
+      <article class="card reveal" style="--d:3" data-spot><span class="icon-badge">{{ page.icon("eye")|safe }}</span><h3 class="h3">Active Oversight</h3><p>Regular reviews ensure consistent delivery, compliance, and alignment with long-term objectives.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="section section--dark">
+  <div class="glow-orb glow-orb--a" aria-hidden="true"></div>
+  <div class="glow-orb glow-orb--b" aria-hidden="true"></div>
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Track record</span>
+      <h2 class="h2">The Strength of the Approach</h2>
+    </div>
+    <div class="grid grid-2">
+      <div class="big-stat reveal"><div class="big-stat__value text-gradient" data-count="30" data-suffix="+">30+</div><p>Years of combined leadership experience</p></div>
+      <div class="big-stat reveal" style="--d:1"><div class="big-stat__value text-gradient">Proven</div><p>Track record in building and scaling multi-sector enterprises</p></div>
+    </div>
+  </div>
+</section>
+
+{% include "partials/cta.html" %}
+{% endblock %}

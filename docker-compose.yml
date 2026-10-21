@@ -1,0 +1,19 @@
+services:
+  web:
+    build: .
+    image: alfa-global-site:latest
+    container_name: alfa-global-site
+    restart: unless-stopped
+    ports:
+      - "${HOST_PORT:-8080}:8080"
+    # NOCODB_URL, NOCODB_API_TOKEN and the other settings come from .env
+    env_file: .env
+    environment:
+      PORT: "8080"
+      STATIC_DIR: /app/static
+      ENQUIRIES_FILE: /data/enquiries.jsonl
+    volumes:
+      - enquiries:/data
+
+volumes:
+  enquiries:
