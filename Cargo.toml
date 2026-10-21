@@ -4,6 +4,7 @@ version = "1.0.0"
 edition = "2021"
 description = "Alfa Global Group website, server-rendered in Rust"
 publish = false
+license-file = "LICENSE.md"
 
 [dependencies]
 askama = "0.12"
